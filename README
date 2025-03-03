@@ -1,0 +1,18 @@
+librecudars provides safe and minimalistic abstractions over librecuda[0]. This
+project is similar to the cudarc[1] crate but without relying on the proprietary
+CUDA runtime by wrapping librecuda which provides direct hardware communication
+via ioctl and QMD. This in turn is based off tinygrad's opensource nvidia runtimes
+in Python.
+
+With respect to the Rust's scientific computing ecosystem[3], librecudars is
+intended for applications looking to express device-side kernels in CUDA C, as
+opposed to higher/adjacent levels of abstraction such as pure Rust with Rust-CUDA[4],
+annotated Rust with CubeCL[5], or WGSL with wgpu[6].
+
+[0]: https://github.com/mikex86/LibreCuda
+[1]: https://github.com/coreylowman/cudarc
+[2]: https://github.com/tinygrad/tinygrad/blob/master/tinygrad/runtime/ops_nv.py
+[3]: https://www.arewelearningyet.com/
+[4]: https://github.com/Rust-GPU/Rust-CUDA
+[5]: https://github.com/tracel-ai/cubecl
+[6]: https://github.com/gfx-rs/wgpu
