@@ -1,14 +1,19 @@
 librecudars provides a minimally safe abstraction over librecuda[0]. This crate
 is similar to the cudarc[1] crate except replacing the proprietary cuda runtime
-with librecuda which directly communicates with nvidia hardware via ioctl and
-QMD. This in turn is based off tinygrad's opensource nvidia runtimes[2] in python.
-As of now librecuda is not binary compatible[3]. If wrapper headers are implemented,
+with librecuda which directly communicates to nvidia hardware via ioctl and QMD.
+This in turn is based off tinygrad's opensource nvidia runtime[2] in python. As
+of now librecuda is not binary compatible[3]. If wrapper headers are implemented,
 then librecuda can be used as a drop-in replacement with pre-existing crates.
 
 With respect to the rusts's scientific computing ecosystem[4], librecudars is
 intended for applications looking to express device-side kernels in cuda c, as
 opposed to other levels of abstraction such as pure rust with rust-cuda[5],
 annotated rust with cubecl[6], or wgsl with wgpu[7].
+
+usage: this crate uses bindgen to generate rust ffi bindings to librecuda which
+in turn depends on libclang's preprocessing, parsing, and typechecking to avoid
+generating platform-specific bindnigs. Please follow these instructions[8] based
+depending on your operating system.
 
 [0]: https://github.com/mikex86/LibreCuda
 [1]: https://github.com/coreylowman/cudarc
@@ -18,3 +23,4 @@ annotated rust with cubecl[6], or wgsl with wgpu[7].
 [5]: https://github.com/Rust-GPU/Rust-CUDA
 [6]: https://github.com/tracel-ai/cubecl
 [7]: https://github.com/gfx-rs/wgpu
+[8]: https://rust-lang.github.io/rust-bindgen/requirements.html
