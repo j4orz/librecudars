@@ -1,18 +1,20 @@
-librecudars provides safe and minimalistic abstractions over librecuda[0]. This
-project is similar to the cudarc[1] crate but without relying on the proprietary
-CUDA runtime by wrapping librecuda which provides direct hardware communication
-via ioctl and QMD. This in turn is based off tinygrad's opensource nvidia runtimes
-in Python.
+librecudars provides a minimally safe abstraction over librecuda[0]. This crate
+is similar to the cudarc[1] crate except replacing the proprietary cuda runtime
+with librecuda which directly communicates with nvidia hardware via ioctl and
+QMD. This in turn is based off tinygrad's opensource nvidia runtimes[2] in python.
+As of now librecuda is not binary compatible[3]. If wrapper headers are implemented,
+then librecuda can be used as a drop-in replacement with pre-existing crates.
 
-With respect to the Rust's scientific computing ecosystem[3], librecudars is
-intended for applications looking to express device-side kernels in CUDA C, as
-opposed to higher/adjacent levels of abstraction such as pure Rust with Rust-CUDA[4],
-annotated Rust with CubeCL[5], or WGSL with wgpu[6].
+With respect to the rusts's scientific computing ecosystem[4], librecudars is
+intended for applications looking to express device-side kernels in cuda c, as
+opposed to other levels of abstraction such as pure rust with rust-cuda[5],
+annotated rust with cubecl[6], or wgsl with wgpu[7].
 
 [0]: https://github.com/mikex86/LibreCuda
 [1]: https://github.com/coreylowman/cudarc
 [2]: https://github.com/tinygrad/tinygrad/blob/master/tinygrad/runtime/ops_nv.py
-[3]: https://www.arewelearningyet.com/
-[4]: https://github.com/Rust-GPU/Rust-CUDA
-[5]: https://github.com/tracel-ai/cubecl
-[6]: https://github.com/gfx-rs/wgpu
+[3]: https://news.ycombinator.com/item?id=41297017
+[4]: https://www.arewelearningyet.com/
+[5]: https://github.com/Rust-GPU/Rust-CUDA
+[6]: https://github.com/tracel-ai/cubecl
+[7]: https://github.com/gfx-rs/wgpu
