@@ -16,7 +16,8 @@ fn main() {
         .header("vendor/librecuda/driverapi/include/librecuda.h")
         .clang_arg("-x")
         .clang_arg("c++")
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new())) // invalidate crate on header change
+        .layout_tests(false)
+        .allowlist_type("LibreCU.*") // only generate bindings for librecuda api. not all c++ types
         .generate()
         .expect("unable to generate bindings");
 
