@@ -1,0 +1,3 @@
+[submodule "vendor/librecuda"]
+	path = vendor/librecuda
+	url = https://github.com/mikex86/LibreCuda
