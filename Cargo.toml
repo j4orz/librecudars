@@ -1,10 +1,5 @@
-[package]
-name = "librecudars"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-
-[build-dependencies]
-bindgen = "0.71.1"
-cmake = "0.1.54"
+[workspace]
+members = [
+  "licurs-sys",
+  "licurs",
+]

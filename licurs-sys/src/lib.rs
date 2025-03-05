@@ -1,5 +1,11 @@
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
+fn foo() {
+    unsafe {
+        let foo = libreCuInit(0);
+    }
+}
+
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
 }
