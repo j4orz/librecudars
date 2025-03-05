@@ -1,19 +1,25 @@
-licurs provides a Rust wrapper around librecuda[0]. This crate is similar to the
-cudarc[1] crate except replacing the proprietary cuda runtime with librecuda which
-directly communicates to nvidia hardware via ioctl and QMD. This in turn is based
-off tinygrad's opensource nvidia runtime[2] in python. As of now librecuda is not
-binary compatible[3]. If wrapper headers are implemented, then librecuda can be
-used as a drop-in replacement with pre-existing crates.
+licurs provides an ergnomic Rust wrapper around librecuda[0]. This crate is
+similar to the cudarc[1] crate except replacing the proprietary cuda runtime with
+librecuda which directly communicates to nvidia hardware via ioctl and QMD. This
+in turn is based off tinygrad's opensource nvidia runtime[2] in python. As of now
+librecuda is not binary compatible[3]. If wrapper headers are implemented, then
+librecuda can be used as a drop-in replacement with pre-existing crates.
 
 With respect to the rusts's scientific computing ecosystem[4], licurs is intended
 for applications looking to express device-side kernels in cuda c, as opposed to
 other levels of abstraction such as pure rust with rust-cuda[5], annotated rust
 with cubecl[6], or wgsl with wgpu[7].
 
-usage: this crate uses bindgen to generate rust ffi bindings to librecuda which
-in turn depends on libclang's preprocessing, parsing, and typechecking to avoid
-generating platform-specific bindnigs. Please follow these instructions[8] based
-depending on your operating system.
+usage: this repo is a cargo workspace which includes two sub-crates: licurs-sys
+and licurs. The former is a 1-1 ffi wrapper over the c shared object code which
+uses bindgen which in turn depends on libclang's preprocessing, parsing, and
+typechecking to avoid generating platform-specific bindnigs. Please follow these
+instructions[8] based depending on your operating system.
+
+note: for now licurs-sys vendors librecuda source by default given how niche the
+library's use case is. Please file an issue (a PR is better) if you need to use
+the systems' installation via pkg-config for hermetic builds and make vendoring
+opt-in.
 
 [0]: https://github.com/mikex86/LibreCuda
 [1]: https://github.com/coreylowman/cudarc

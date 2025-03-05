@@ -1,15 +1,18 @@
 use std::env;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
+use std::process::Command;
 
 fn main() {
-    let vendored = env::var("CARGO_FEATURE_VENDORED").is_ok();
+    if !Path::new("vendor/librecuda").exists() {
+        let _ = Command::new("git")
+            .args(&["submodule", "update", "--init", "--recursive"]) // --recursive for ELFIO
+            .status();
+    }
 
-    // 1. compile and link (cmake crate follows cargo's debug/release mode)
+    // 1. build librecuda from source
     let dst = cmake::Config::new("vendor/librecuda")
         .no_build_target(true)
         .build();
-
-    // build scripts communicate with cargo via stdout cargo: commands
     println!("cargo:rustc-link-search={}", dst.display()); // -L
     println!("cargo:rustc-link-lib=driverapi"); // -l
 

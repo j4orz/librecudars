@@ -3,6 +3,9 @@ name = "librecudars"
 version = "0.1.0"
 edition = "2024"
 links = "driverapi"
+exclude = [
+  "vendor/librecuda/tests"
+]
 
 [dependencies]
 
