@@ -119,16 +119,19 @@ dependencies = [
 ]
 
 [[package]]
-name = "librecudars"
+name = "licurs"
+version = "0.1.0"
+dependencies = [
+ "licurs_sys",
+]
+
+[[package]]
+name = "licurs_sys"
 version = "0.1.0"
 dependencies = [
  "bindgen",
  "cmake",
 ]
-
-[[package]]
-name = "licurs"
-version = "0.1.0"
 
 [[package]]
 name = "log"

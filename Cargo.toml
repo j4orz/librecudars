@@ -1,5 +1,5 @@
 [workspace]
 members = [
-  "licurs-sys",
+  "licurs_sys",
   "licurs",
 ]
